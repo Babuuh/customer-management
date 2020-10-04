@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
 import os
 
@@ -25,9 +25,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '*ph_qv-^p-54-n-f3x_yuw2o^5+g8%k3!epps2anjk7&m(x^m3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['babuuh-crm1.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['babuuh-crm.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -137,11 +137,15 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/images/'
 
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
@@ -155,6 +159,5 @@ EMAIL_HOST_USER = 'kiharajoseph72@gmail.com'
 EMAIL_HOST_PASSWORD = 'babuuh12'
 
 
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# Activate Django-Heroku.
+django_heroku.settings(locals())
