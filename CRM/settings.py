@@ -143,8 +143,6 @@ STATICFILES_DIRS = [
 ]
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
@@ -157,7 +155,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kiharajoseph72@gmail.com'
 EMAIL_HOST_PASSWORD = 'babuuh12'
-
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
